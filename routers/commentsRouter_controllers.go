@@ -25,6 +25,15 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["push-data/controllers:ObjectController"] = append(beego.GlobalControllerRouter["push-data/controllers:ObjectController"],
+        beego.ControllerComments{
+            Method: "GetPaginateObjectWithName",
+            Router: "/page-object-names",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["push-data/controllers:UserController"] = append(beego.GlobalControllerRouter["push-data/controllers:UserController"],
         beego.ControllerComments{
             Method: "Post",
@@ -38,6 +47,24 @@ func init() {
         beego.ControllerComments{
             Method: "Get",
             Router: "/:uid",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["push-data/controllers:UserController"] = append(beego.GlobalControllerRouter["push-data/controllers:UserController"],
+        beego.ControllerComments{
+            Method: "GetPaginateObjectOfUser",
+            Router: "/page-object-users",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["push-data/controllers:UserController"] = append(beego.GlobalControllerRouter["push-data/controllers:UserController"],
+        beego.ControllerComments{
+            Method: "GetPaginateUser",
+            Router: "/page-users",
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,

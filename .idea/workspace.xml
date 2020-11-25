@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fbe7c1f-bfdd-4ee5-a77b-e0518eb71122" name="Default Changelist" comment="" />
+    <list default="true" id="3fbe7c1f-bfdd-4ee5-a77b-e0518eb71122" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/push/run_user_bigset.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/object.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lastupdate.tmp" beforeDir="false" afterPath="$PROJECT_DIR$/lastupdate.tmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/global.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/global.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/object.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/commentsRouter_controllers.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/commentsRouter_controllers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_object_bigset.go" beforeDir="false" afterPath="$PROJECT_DIR$/push/run_object_bigset.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_object_mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/push/run_object_mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_user_bigset.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_user_mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/push/run_user_mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/swagger/swagger.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swagger/swagger.yml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger/swagger.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfile.go" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testfile.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +50,9 @@
     </option>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
@@ -35,12 +73,26 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/push-data" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -50,6 +102,10 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="118" y="378" width="1673" height="365" key="#SQL_Dialects/0.34.1920.1046@0.34.1920.1046" timestamp="1605420717302" />
+    <state x="598" y="341" width="714" height="445" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606276196733">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="598" y="341" width="714" height="445" key="#com.intellij.fileTypes.FileTypeChooser/0.34.1920.1046@0.34.1920.1046" timestamp="1606276196733" />
     <state x="654" y="258" width="530" height="605" key="FileChooserDialogImpl" timestamp="1604545498055">
       <screen x="0" y="34" width="1848" height="1046" />
     </state>

@@ -43,6 +43,51 @@
                 }
             }
         },
+        "/object/page-object-names": {
+            "get": {
+                "tags": [
+                    "object"
+                ],
+                "description": "find object by objectid",
+                "operationId": "ObjectController.GetPaginateObjectWithName",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "objectName",
+                        "description": "the object name you want to get",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "the page",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "count",
+                        "description": "the page length",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Object"
+                        }
+                    },
+                    "403": {
+                        "description": ":objectId is empty"
+                    }
+                }
+            }
+        },
         "/object/{objectId}": {
             "get": {
                 "tags": [
@@ -96,6 +141,90 @@
                     },
                     "403": {
                         "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/page-object-users": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "find object by objectid",
+                "operationId": "UserController.GetPaginateObjectOfUser",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "userID",
+                        "description": "the userID you want to get",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "the page",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "count",
+                        "description": "the page length",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Object"
+                        }
+                    },
+                    "403": {
+                        "description": ":objectId is empty"
+                    }
+                }
+            }
+        },
+        "/user/page-users": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "find object by objectid",
+                "operationId": "UserController.GetPaginateUser",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "the page",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "query",
+                        "name": "count",
+                        "description": "the page length",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Object"
+                        }
+                    },
+                    "403": {
+                        "description": ":objectId is empty"
                     }
                 }
             }

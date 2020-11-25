@@ -48,6 +48,37 @@ paths:
             $ref: '#/definitions/models.Object'
         "403":
           description: :objectId is empty
+  /object/page-object-names:
+    get:
+      tags:
+      - object
+      description: find object by objectid
+      operationId: ObjectController.GetPaginateObjectWithName
+      parameters:
+      - in: query
+        name: objectName
+        description: the object name you want to get
+        required: true
+        type: string
+      - in: query
+        name: page
+        description: the page
+        required: true
+        type: integer
+        format: int64
+      - in: query
+        name: count
+        description: the page length
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Object'
+        "403":
+          description: :objectId is empty
   /user/:
     post:
       tags:
@@ -85,6 +116,64 @@ paths:
             $ref: '#/definitions/models.User'
         "403":
           description: :uid is empty
+  /user/page-object-users:
+    get:
+      tags:
+      - user
+      description: find object by objectid
+      operationId: UserController.GetPaginateObjectOfUser
+      parameters:
+      - in: query
+        name: userID
+        description: the userID you want to get
+        required: true
+        type: integer
+        format: int64
+      - in: query
+        name: page
+        description: the page
+        required: true
+        type: integer
+        format: int64
+      - in: query
+        name: count
+        description: the page length
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Object'
+        "403":
+          description: :objectId is empty
+  /user/page-users:
+    get:
+      tags:
+      - user
+      description: find object by objectid
+      operationId: UserController.GetPaginateUser
+      parameters:
+      - in: query
+        name: page
+        description: the page
+        required: true
+        type: integer
+        format: int64
+      - in: query
+        name: count
+        description: the page length
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Object'
+        "403":
+          description: :objectId is empty
 definitions:
   models.Object:
     title: Object

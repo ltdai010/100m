@@ -20,7 +20,7 @@ var (
 func InitBigset() {
 	bigsetOnce.Do(func() {
 		BigsetIf = StringBigsetService.NewStringBigsetServiceModel("/data/",
-			[]string{},
+			[]string{"127.0.0.1:2379"},
 			GoEndpointBackendManager.EndPoint{
 				Host:      "localhost",
 				Port:      "18990",

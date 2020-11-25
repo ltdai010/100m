@@ -3,7 +3,6 @@ package models
 import (
 	"encoding/binary"
 	"encoding/json"
-	"fmt"
 	"github.com/OpenStars/EtcdBackendService/StringBigsetService/bigset/thrift/gen-go/openstars/core/bigset/generic"
 )
 
@@ -17,7 +16,8 @@ type Object struct {
 const OBJECT = "object"
 const OBJECT_COUNTER = "object_counter"
 
-func AddOne(object Object) (string, error) {
+func AddOne(object Object) (int32, error) {
+	//convert int32 to byte
 	bs := make([]byte, 4)
 	binary.BigEndian.PutUint32(bs, uint32(object.ObjectId))
 	b, err := json.Marshal(&object)
@@ -25,31 +25,35 @@ func AddOne(object Object) (string, error) {
 		Key:   bs,
 		Value: b,
 	}
+	//put to database
 	_, err = BigsetIf.BsPutItem2(OBJECT, &it)
 	if err != nil {
-		return "", err
+		return 0, err
 	}
 	obScore := &ObjectObjectName{
 		ObjectID: object.ObjectId,
 		ObjectName: object.ObjectName,
 	}
+	//index object name
 	err = obScore.AddCToP()
 	if err != nil {
-		return "", err
+		return 0, err
 	}
 	obUser := &ObjectUser{
 		ObjectID: object.ObjectId,
 		UserID:   object.UserID,
 	}
+	//index objectID and userID
 	err = obUser.AddCToP()
 	if err != nil {
-		return "", err
+		return 0, err
 	}
-	return fmt.Sprintf("%012d", object.ObjectId), nil
+	return object.ObjectId, nil
 }
 
 func AddMultipleObject(list []Object) error {
 	var err error
+	//create list item
 	listIt := []*generic.TItem{}
 	listOn := []*generic.TItem{}
 	listOu := []*generic.TItem{}
@@ -86,6 +90,7 @@ func AddMultipleObject(list []Object) error {
 		}
 		listOu = append(listOu, &nit)
 	}
+	//put list item
 	_, err = BigsetIf.BsMultiPut2(OBJECT, listIt)
 	_, err = BigsetIf.BsMultiPut2(OBJECT_OBJECT_NAME, listOn)
 	_, err = BigsetIf.BsMultiPut2(OBJECT_USER, listOu)
@@ -102,19 +107,3 @@ func GetOne(ObjectId string) (object *Object, err error) {
 	return &ob, err
 }
 
-func GetPaginateIn(UserID string, counter int32) ([]*Object, error) {
-	listit, err := BigsetIf.BsGetSliceFromItem2(USER, generic.TItemKey(UserID+"-"), counter)
-	if err != nil {
-		return nil, err
-	}
-	listOb := []*Object{}
-	for _, i := range listit {
-		var ob Object
-		err = json.Unmarshal(i.GetValue(), &ob)
-		if err != nil {
-			return nil, err
-		}
-		listOb = append(listOb, &ob)
-	}
-	return listOb, nil
-}

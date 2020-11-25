@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"push-data/models"
 	"encoding/json"
 
@@ -27,19 +28,9 @@ func (u *UserController) Post() {
 		u.ServeJSON()
 		return
 	}
-	u.Data["json"] = map[string]string{"uid": uid}
+	u.Data["json"] = map[string]string{"uid": fmt.Sprint(uid)}
 	u.ServeJSON()
 }
-
-// @Title GetAll
-// @Description get all Users
-// @Success 200 {object} models.User
-// @router / [get]
-//func (u *UserController) GetAll() {
-//	users := models.GetAllUsers()
-//	u.Data["json"] = users
-//	u.ServeJSON()
-//}
 
 // @Title Get
 // @Description get user by uid
@@ -60,37 +51,44 @@ func (u *UserController) Get() {
 	u.ServeJSON()
 }
 
-// @Title Update
-// @Description update the user
-// @Param	uid		path 	string	true		"The uid you want to update"
-// @Param	body		body 	models.User	true		"body for user content"
-// @Success 200 {object} models.User
-// @Failure 403 :uid is not int
-// @router /:uid [put]
-//func (u *UserController) Put() {
-//	uid := u.GetString(":uid")
-//	if uid != "" {
-//		var user models.User
-//		json.Unmarshal(u.Ctx.Input.RequestBody, &user)
-//		uu, err := models.UpdateUser(uid, &user)
-//		if err != nil {
-//			u.Data["json"] = err.Error()
-//		} else {
-//			u.Data["json"] = uu
-//		}
-//	}
-//	u.ServeJSON()
-//}
+// @Title GetPaginateObjectOfUser
+// @Description find object by objectid
+// @Param	userID		query 	int		true		"the userID you want to get"
+// @Param	page		query	int		true		"the page"
+// @Param	count		query	int		true		"the page length"
+// @Success 200 {object} models.Object
+// @Failure 403 :objectId is empty
+// @router /page-object-users [get]
+func (o *UserController) GetPaginateObjectOfUser() {
+	userID, _ := o.GetInt32("userID")
+	page, _ := o.GetInt32("page")
+	count, _ := o.GetInt32("count")
+	ob, err := models.GetPaginateObjectInUser(userID, page, count)
+	if err != nil {
+		o.Data["json"] = err.Error()
+	} else {
+		o.Data["json"] = ob
+	}
+	o.ServeJSON()
+}
 
-// @Title Delete
-// @Description delete the user
-// @Param	uid		path 	string	true		"The uid you want to delete"
-// @Success 200 {string} delete success!
-// @Failure 403 uid is empty
-// @router /:uid [delete]
-//func (u *UserController) Delete() {
-//	uid := u.GetString(":uid")
-//	models.DeleteUser(uid)
-//	u.Data["json"] = "delete success!"
-//	u.ServeJSON()
-//}
+
+
+// @Title GetPaginateUser
+// @Description find object by objectid
+// @Param	page		query	int		true		"the page"
+// @Param	count		query	int		true		"the page length"
+// @Success 200 {object} models.Object
+// @Failure 403 :objectId is empty
+// @router /page-users [get]
+func (o *UserController) GetPaginateUser() {
+	page, _ := o.GetInt32("page")
+	count, _ := o.GetInt32("count")
+	ob, err := models.GetPaginateUsers(page, count)
+	if err != nil {
+		o.Data["json"] = err.Error()
+	} else {
+		o.Data["json"] = ob
+	}
+	o.ServeJSON()
+}

@@ -1,9 +1,11 @@
-package main
+package test
 
 import (
+	"encoding/binary"
 	"github.com/OpenStars/EtcdBackendService/StringBigsetService/bigset/thrift/gen-go/openstars/core/bigset/generic"
 	"log"
 	"push-data/models"
+	"time"
 )
 
 func main() {
@@ -15,19 +17,19 @@ func main() {
 	//bs2 := make([]byte, 4)
 	//binary.BigEndian.PutUint32(bs2, 1000000)
 	//s := time.Now().Unix()
-	////listit, _, _ := models.BigsetIf.BsRangeQueryByPage2(models.OBJECT, bs1, bs2, 0, 10)
-	//listit, _ := models.BigsetIf.BsGetSliceFromItem2(models.OBJECT_USER, bs2, 10)
-	//for _, it := range listit {
-	//	log.Println(binary.LittleEndian.Uint32(it.GetKey()))
-	//}
 	//fmt.Println(time.Now().Unix() - s)
 	//RemoveAll(models.OBJECT_OBJECT_NAME)
-	i, err := models.BigsetIf.GetTotalCount2(models.OBJECT)
+	startTime := time.Now().UnixNano()
+	bs := make([]byte, 4)
+	binary.BigEndian.PutUint32(bs, 1090000)
+	key := append(bs, []byte("-")...)
+	list, err := models.BigsetIf.BsGetSliceFromItem2(models.OBJECT, key, 10)
+	log.Println(len(list))
 	if err != nil {
 		log.Println(err)
 		return
 	}
-	log.Println(i)
+	log.Println("executed time", time.Now().UnixNano() - startTime)
 }
 
 func RemoveAll(key string) {

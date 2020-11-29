@@ -1,24 +1,24 @@
-package main
+package main2
 //
 //import (
 //	"fmt"
 //	"log"
-//	"push/models"
+//	"push-data/models"
 //	"sync"
 //	"time"
 //)
 //
 //var (
-//	chanObject chan []models.User
-//	wg       sync.WaitGroup
-//	in       int
+//	chanObject chan []models.User //channel store data
+//	wg       sync.WaitGroup //create wait group
+//	in       int //count
 //)
 //
 //const (
-//	loop = 1
-//	step = 10000
-//	channel = 100
-//	workers = 4
+//	loop = 1 //so lan lap
+//	step = 10000 //do dai mang push vao 1 lan
+//	channel = 100 //so cong viec
+//	workers = 4 //so cong nhan
 //)
 //
 ////worker
@@ -30,12 +30,12 @@ package main
 //		}
 //		in++
 //		log.Println("pushed", in*step)
-//		wg.Done()
+//		wg.Done() //done 1 channel
 //	}
 //}
 //
 //func main() {
-//	in = 0
+//	in = 0 //counter
 //	chanObject = make(chan []models.User, channel+10)
 //	//initial database
 //	models.InitBigset()
@@ -48,11 +48,11 @@ package main
 //	//start loop
 //	for k := 0; k < loop; k++ {
 //		count, err := models.Kvcountersv.GetStepValue(models.USER_COUNTER, step*channel)
-//		//add data channel
+//		//add channels
 //		wg.Add(channel)
 //		for i := 0; i < channel; i++ {
 //			list := []models.User{}
-//			n := fmt.Sprint(i)
+//			name := fmt.Sprint(i)
 //			fmt.Println("start from", count)
 //			if err != nil {
 //				log.Fatal(err)
@@ -61,7 +61,7 @@ package main
 //			for j := 0; j < step; j++ {
 //				u := models.User{
 //					UserID: int32(count),
-//					Username: n,
+//					Username: name,
 //				}
 //				count++
 //				list = append(list, u)

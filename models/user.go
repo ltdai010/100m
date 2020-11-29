@@ -22,11 +22,13 @@ func AddUser(u User) (int32, error) {
 		Key:   bs,
 		Value: b,
 	}
+	//add user
 	_, err = BigsetIf.BsPutItem2(USER, &it)
 	usernameUser := &UserUsername{
 		UserID:   u.UserID,
 		Username: u.Username,
 	}
+	//create username index
 	err = usernameUser.AddCToP()
 	return u.UserID, err
 }
@@ -95,12 +97,12 @@ func GetPaginateUsers(pos int32, count int32) ([]*User, error) {
 	return listU, nil
 }
 
-
-
 func GetPaginateObjectInUser(UserID , page, counter int32) ([]*Object, error) {
+	//make key
 	bs := make([]byte, 4)
 	binary.BigEndian.PutUint32(bs, uint32(UserID))
 	k := append(bs, []byte("-")...)
+	//get slice
 	listit, err := BigsetIf.BsGetSliceFromItem2(OBJECT_USER, k, counter)
 	if err != nil {
 		return nil, err
@@ -110,6 +112,7 @@ func GetPaginateObjectInUser(UserID , page, counter int32) ([]*Object, error) {
 	}
 	key := listit[len(listit) - 1].GetKey()
 	var i int32
+	//roll page
 	for i = 0; i < page; i++ {
 		listit, err = BigsetIf.BsGetSliceFromItem2(OBJECT_USER, key, counter)
 		if err != nil {
@@ -133,36 +136,3 @@ func GetPaginateObjectInUser(UserID , page, counter int32) ([]*Object, error) {
 	return listO, nil
 }
 
-
-func GetPaginateObjectWithObjectName(ObjectName string, page, counter int32) ([]*Object, error) {
-	listit, err := BigsetIf.BsGetSliceFromItem2(OBJECT_OBJECT_NAME, generic.TItemKey(ObjectName + "-"), counter)
-	if err != nil {
-		return nil, err
-	}
-	if len(listit) == 0 {
-		return nil, nil
-	}
-	key := listit[len(listit) - 1].GetKey()
-	var i int32
-	for i = 0; i < page; i++ {
-		listit, err = BigsetIf.BsGetSliceFromItem2(OBJECT_OBJECT_NAME, key, counter)
-		if err != nil {
-			return nil, err
-		}
-		key = listit[len(listit) - 1].GetKey()
-	}
-	listO := []*Object{}
-	for _, i := range listit {
-		o := &Object{}
-		it, err := BigsetIf.BsGetItem2(OBJECT, i.GetValue())
-		if err != nil {
-			return nil, err
-		}
-		err = json.Unmarshal(it.GetValue(), o)
-		if err != nil {
-			return nil, err
-		}
-		listO = append(listO, o)
-	}
-	return listO, nil
-}

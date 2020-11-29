@@ -107,3 +107,38 @@ func GetOne(ObjectId string) (object *Object, err error) {
 	return &ob, err
 }
 
+func GetPaginateObjectWithObjectName(ObjectName string, page, counter int32) ([]*Object, error) {
+	//get slice form key obname-
+	listit, err := BigsetIf.BsGetSliceFromItem2(OBJECT_OBJECT_NAME, generic.TItemKey(ObjectName + "-"), counter)
+	if err != nil {
+		return nil, err
+	}
+	if len(listit) == 0 {
+		return nil, nil
+	}
+	key := listit[len(listit) - 1].GetKey()
+	var i int32
+	//roll page
+	for i = 0; i < page; i++ {
+		listit, err = BigsetIf.BsGetSliceFromItem2(OBJECT_OBJECT_NAME, key, counter)
+		if err != nil {
+			return nil, err
+		}
+		key = listit[len(listit) - 1].GetKey()
+	}
+	listO := []*Object{}
+	//get object value
+	for _, i := range listit {
+		o := &Object{}
+		it, err := BigsetIf.BsGetItem2(OBJECT, i.GetValue())
+		if err != nil {
+			return nil, err
+		}
+		err = json.Unmarshal(it.GetValue(), o)
+		if err != nil {
+			return nil, err
+		}
+		listO = append(listO, o)
+	}
+	return listO, nil
+}

@@ -19,6 +19,7 @@ var (
 
 func InitBigset() {
 	bigsetOnce.Do(func() {
+		// database connection
 		BigsetIf = StringBigsetService.NewStringBigsetServiceModel("/data/",
 			[]string{"127.0.0.1:2379"},
 			GoEndpointBackendManager.EndPoint{
@@ -26,6 +27,7 @@ func InitBigset() {
 				Port:      "18990",
 				ServiceID: "/data/",
 			})
+		// auto id generate
 		Kvcountersv = KVCounterService.NewKVCounterServiceModel("/data-counter/",
 			[]string{},
 			GoEndpointBackendManager.EndPoint{
@@ -34,10 +36,10 @@ func InitBigset() {
 				ServiceID: "/data-counter/",
 			})
 		var err error
+		//mysql connection
 		Mysql, err = sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/test")
 		if err != nil {
 			log.Fatal(err)
 		}
 	})
 }
-

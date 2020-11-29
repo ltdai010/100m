@@ -20,22 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fbe7c1f-bfdd-4ee5-a77b-e0518eb71122" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/push/run_user_bigset.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/object.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/app.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lastupdate.tmp" beforeDir="false" afterPath="$PROJECT_DIR$/lastupdate.tmp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/global.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/global.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/map_object_name.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/map_object_name.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/map_user_username.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/map_user_username.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/object.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/object.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/commentsRouter_controllers.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/commentsRouter_controllers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_object_bigset.go" beforeDir="false" afterPath="$PROJECT_DIR$/push/run_object_bigset.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_object_mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/push/run_object_mysql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_user_bigset.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_user_mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/push/run_user_mysql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/swagger/swagger.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger/swagger.yml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger/swagger.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testfile.go" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testfile.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/push/run_object_bigset.go" beforeDir="false" afterPath="$PROJECT_DIR$/push/run_object_bigset.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/push/run_object_mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/push/run_object_mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/push/run_user_bigset.go" beforeDir="false" afterPath="$PROJECT_DIR$/push/run_user_bigset.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/push/run_user_mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/push/run_user_mysql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/default_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/tests/default_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/testfile.go" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testfile.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +53,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GoLibraries">
-    <option name="indexEntireGoPath" value="false" />
-  </component>
   <component name="ProjectId" id="1jljtyW1GQ7BBU8eWZ1k1WUdKcM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -65,11 +62,14 @@
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../concurrency-in-go-src" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gitlab.123xe.vn" />
+    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -102,17 +102,23 @@
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="118" y="378" width="1673" height="365" key="#SQL_Dialects/0.34.1920.1046@0.34.1920.1046" timestamp="1605420717302" />
+    <state x="414" y="208" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606461505912">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state x="414" y="208" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1606461505912" />
     <state x="598" y="341" width="714" height="445" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606276196733">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="598" y="341" width="714" height="445" key="#com.intellij.fileTypes.FileTypeChooser/0.34.1920.1046@0.34.1920.1046" timestamp="1606276196733" />
-    <state x="654" y="258" width="530" height="605" key="FileChooserDialogImpl" timestamp="1604545498055">
-      <screen x="0" y="34" width="1848" height="1046" />
+    <state x="679" y="258" width="530" height="605" key="FileChooserDialogImpl" timestamp="1606447013166">
+      <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="654" y="258" width="530" height="605" key="FileChooserDialogImpl/0.34.1848.1046@0.34.1848.1046" timestamp="1604545498055" />
-    <state x="288" y="104" width="1271" height="912" key="SettingsEditor" timestamp="1604510392966">
-      <screen x="0" y="34" width="1848" height="1046" />
+    <state x="679" y="258" width="530" height="605" key="FileChooserDialogImpl/0.34.1920.1046@0.34.1920.1046" timestamp="1606447013166" />
+    <state x="299" y="104" width="1271" height="912" key="SettingsEditor" timestamp="1606461224855">
+      <screen x="0" y="34" width="1920" height="1046" />
     </state>
     <state x="288" y="104" width="1271" height="912" key="SettingsEditor/0.34.1848.1046@0.34.1848.1046" timestamp="1604510392966" />
+    <state x="299" y="104" key="SettingsEditor/0.34.1920.1046@0.34.1920.1046" timestamp="1606461224855" />
   </component>
 </project>

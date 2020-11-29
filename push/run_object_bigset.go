@@ -1,98 +1,82 @@
-package main
+package main2
 
-//import (
-//	"encoding/json"
-//	"fmt"
-//	"log"
-//	"math/rand"
-//	"push/models"
-//	"sync"
-//	"time"
-//)
-//
 //var (
-//	chanObject chan []models.Object
-//	wg         sync.WaitGroup
-//	in         int
+//	in       int
 //)
 //
 //const (
-//	loop = 5
+//	loop = 90
 //	step = 1000
 //	channel = 1000
 //	workers = 4
 //)
 //
-////worker
-//func pushMulti(list <- chan []models.Object, wg *sync.WaitGroup) {
-//	for i := range list {
-//		err := models.AddMultipleObject(i)
-//		if err != nil {
-//			log.Fatal(err)
+//func pushMulti(list []models.Object) {
+//	s:= ""
+//	n := ""
+//	q, err := models.Mysql.Query("SELECT MAX(ObjectID) as id FROM objects")
+//	id := 0
+//	q.Next()
+//	q.Scan(&id)
+//	q.Close()
+//	for j := 0; j < len(list); j++ {
+//		if j == len(list) - 1 {
+//			id++
+//			s += "("+ list[j].ObjectName +"," + fmt.Sprint(list[j].Score) + ","+ fmt.Sprint(list[j].UserID) +")"
+//			n += "("+ fmt.Sprint(list[j].UserID) +"," + fmt.Sprint(id) +")"
+//		} else {
+//			id++
+//			s += "("+ list[j].ObjectName +"," + fmt.Sprint(list[j].Score) + ","+ fmt.Sprint(list[j].UserID) +"),"
+//			n += "("+ fmt.Sprint(list[j].UserID) +"," + fmt.Sprint(id) +"),"
 //		}
-//		in++
-//		log.Println("pushed", in*step)
-//		wg.Done()
 //	}
+//	i, err := models.Mysql.Query("INSERT INTO objects(ObjectName, Score, UserID) VALUES " + s)
+//	if err != nil {
+//		log.Fatal(err)
+//	}
+//	j, err := models.Mysql.Query("INSERT INTO `objects-user`(UserID, ObjectID) VALUES " + n)
+//	if err != nil {
+//		log.Fatal(err)
+//	}
+//	i.Close()
+//	j.Close()
 //}
 //
 //func main() {
 //	in = 0
-//	chanObject = make(chan []models.Object, channel)
-//	//init database
-//	models.InitBigset()
-//	//run worker
-//	for i := 0; i < workers; i++ {
-//		go pushMulti(chanObject, &wg)
-//	}
-//	//check start time
 //	startTime := time.Now().Unix()
-//	//start loop
+//	models.InitBigset()
 //	for k := 0; k < loop; k++ {
-//		//get recentID
-//		count, err := models.Kvcountersv.GetStepValue(models.OBJECT_COUNTER, step*channel)
-//		wg.Add(channel)
-//		users := []*models.User{}
-//		//get user to make object of
-//		listit, err := models.BigsetIf.BsGetSlice2(models.USER, int32(count/step), channel)
-//		log.Println("get user from", count/step)
-//		if err != nil {
-//			log.Fatal(err)
-//			return
-//		}
-//		//make user list
-//		for _, it := range listit {
-//			u := &models.User{}
-//			json.Unmarshal(it.GetValue(), u)
-//			users = append(users, u)
-//		}
-//		//start channel
+//		//wg.Add(channel)
+//		listUser := loadListUser(k * channel, channel)
 //		for i := 0; i < channel; i++ {
+//			n := fmt.Sprint(k*channel + i)
 //			list := []models.Object{}
-//			n := fmt.Sprint(i)
-//			fmt.Println("start from", count)
-//			if err != nil {
-//				log.Fatal(err)
-//			}
-//			//make object
 //			for j := 0; j < step; j++ {
-//				r := rand.Intn(99)
+//				s := rand.Intn(99)
 //				u := models.Object{
-//					ObjectId:   int32(count),
 //					ObjectName: n,
-//					Score:      int32(r),
-//					UserID:     users[i].UserID,
+//					Score: int32(s),
+//					UserID: listUser[i].UserID,
 //				}
-//				count++
 //				list = append(list, u)
 //			}
-//			//push to channel
-//			chanObject <- list
-//			log.Println("creating", ((i + 1)*step))
+//			pushMulti(list)
+//			in++
+//			log.Println("pushed", in*step)
 //		}
-//		//wait for all channel are empty
-//		wg.Wait()
+//		//wg.Wait()
 //	}
-//	//calculate executed time
 //	fmt.Println(time.Now().Unix() - startTime)
+//}
+//
+//func loadListUser(from int, count int) []models.User {
+//	listIt, _ := models.BigsetIf.BsGetSlice2(models.USER, int32(from), int32(count))
+//	list := []models.User{}
+//	for _, it := range listIt {
+//		u := models.User{}
+//		json.Unmarshal(it.GetValue(), &u)
+//		list = append(list, u)
+//	}
+//	return list
 //}

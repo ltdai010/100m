@@ -1,4 +1,4 @@
-package main
+package main2
 
 //var (
 //	chanObject chan []models.User

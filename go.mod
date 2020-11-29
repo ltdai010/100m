@@ -3,7 +3,7 @@ module push-data
 go 1.15
 
 require (
-	github.com/OpenStars/EtcdBackendService v0.0.0-20201021070238-0d4c60000fbe
+	github.com/OpenStars/EtcdBackendService v0.0.0-20201126093136-9335073cd53c
 	github.com/OpenStars/GoEndpointManager v0.0.0-20200513065934-c2f3d8399632
 	github.com/OpenStars/thriftpoolv2 v0.0.0-20200306081147-89225e956ca9 // indirect
 	github.com/apache/thrift v0.13.0 // indirect
@@ -14,7 +14,6 @@ require (
 	github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f // indirect
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible // indirect
-	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/google/uuid v1.1.2 // indirect
 	github.com/technoweenie/multipartstreamer v1.0.1 // indirect
 	go.etcd.io/etcd v3.3.25+incompatible // indirect

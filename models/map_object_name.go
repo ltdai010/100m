@@ -32,7 +32,7 @@ func (g *ObjectObjectName) GetBsKey() generic.TStringKey {
 }
 
 func (g *ObjectObjectName) GetChildBsKey() generic.TStringKey {
-	return generic.TStringKey(fmt.Sprintf("%s", USER))
+	return generic.TStringKey(fmt.Sprintf("%s", OBJECT))
 }
 
 func (this *ObjectObjectName) AddCToP() error {

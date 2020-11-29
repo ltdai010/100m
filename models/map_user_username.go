@@ -39,15 +39,15 @@ func (g *UserUsername) GetChildBsKey() generic.TStringKey {
 }
 
 func (this *UserUsername) AddCToP() error {
-	p, err := BigsetIf.BsGetItem2(this.GetChildBsKey(), []byte{byte(this.ChildID())})
+	bs := make([]byte, 4)
+	binary.BigEndian.PutUint32(bs, uint32(this.UserID))
+	p, err := BigsetIf.BsGetItem2(this.GetChildBsKey(), bs)
 	if err != nil {
 		return err
 	}
 	if p == nil {
 		return errors.New("not exist")
 	}
-	bs := make([]byte, 4)
-	binary.BigEndian.PutUint32(bs, uint32(this.UserID))
 	key := append([]byte(this.ParentID()+"-"), bs...)
 
 	it := generic.TItem{Key: key, Value: bs}
